@@ -1,2 +1,12 @@
-# angular_posts_app
-AngularJS Single Page Application consuming REST apis. Deployed onto AWS via Amazon S3 using Cloudformation templates
+# angular-js-app
+
+This project is generated with [yo angular generator](https://github.com/yeoman/generator-angular)
+version 0.16.0.
+
+## Build & development
+
+Run `grunt` for building and `grunt serve` for preview.
+
+## Testing
+
+Running `grunt test` will run the unit tests with karma.

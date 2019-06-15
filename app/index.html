@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="angularJsAppApp">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="./libs/bootstrap-4.3.1.css"/>
+  <link rel="stylesheet" href="./styles/main.css"/>
+</head>
+<body>
+  <div ui-view>Test</div>
+  <noscript>
+    <h1>You don't have Javascript enabled.</h1>
+    <p>Please enable it to get the full experience.</p>
+  </noscript>
+</body>
+<script src="./libs/angular.1.7.8.js"></script>
+<script src="./libs/angular-ui-router.js"></script>
+<script src="./libs/jquery.js"></script>
+<!-- modules -->
+<script src="./scripts/app.js"></script>
+<!-- controllers -->
+<script src="./scripts/controllers/IndexController.js"></script>
+<script src="./scripts/controllers/DetailController.js"></script>
+</html>

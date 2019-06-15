@@ -1,0 +1,11 @@
+{
+  "name": "angularjsapp",
+  "private": true,
+  "devDependencies": {
+    "gulp": "^4.0.2"
+  },
+  "dependencies": {
+    "gulp-livereload": "^4.0.1",
+    "gulp-scss": "^1.4.0"
+  }
+}
