@@ -35,3 +35,57 @@ table thead td a {
     margin-top:0;
     padding-top:0;
 }
+table img,
+div.collection ul li img {
+    width: 100%;
+}
+img.smileImg {
+    width: 1.5em;
+    margin: 0.25em;
+}
+img.smileImgFooter {
+    width: 1.5em;
+    vertical-align: middle;
+}
+img.smileImg ~ small {
+    // border: .1em solid orange;
+    display: inline-block;
+    font-size: .4em;
+    display: inline;
+    position: relative;
+    bottom: 2em;
+}
+footer.blue.lighten-2 {
+    display: flex;
+    padding: 1em;
+}
+footer.blue.lighten-2 ul {
+    display: inline-block;
+    padding: 1em 0;
+    margin: 0;
+}
+footer.blue.lighten-2 ul.alignLeft {
+    padding: 0;
+}
+footer.blue.lighten-2 .container .row {
+    margin-bottom: 0;
+}
+footer.blue.lighten-2 ul.alignLeft {
+    float:left;
+}
+footer.blue.lighten-2 ul.alignLeft li {
+    padding-right: 1em;
+}
+footer.blue.lighten-2 ul.alignRight {
+    float:right;
+}
+footer.blue.lighten-2 ul.alignRight li {
+    padding-left: 1em;
+}
+footer.blue.lighten-2 ul li a {
+    color: #FFF;
+}
+footer.blue.lighten-2 ul li {
+    display: inline;
+    color: #FFF;
+}

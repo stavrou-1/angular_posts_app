@@ -7,30 +7,31 @@
  * # NavBar
  * Directive of the angularJsAppApp
  */
-angular.module('angularJsAppApp').directive('navBar', function() {
+angular.module('angularJsAppApp').directive('navBar', function($rootScope) {
     return {
         restrict: 'E',
         scope: false,
-        link: function(scope, element, attrs) {
-            console.log("linked");
+        link: function(scope) {
+          scope.state = $rootScope.globalState.$current.name
         },
         template: 
-          `  <nav class="teal lighten-2">
+          `  <nav class="blue lighten-2">
           <div class="nav-wrapper">
-            <a href="#!" class="brand-logo">Logo</a>
-            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            <a href="#!" class="brand-logo">
+              <img src="../images/smile.png" class="smileImg"/>
+              <small>Resource Finder</small>
+            </a>
+            <a href="#" data-target="mobile-demo" ng-click="toggleMobileNav()" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             <ul class="right hide-on-med-and-down">
-              <li><a href="sass.html">Sass</a></li>
-              <li><a href="badges.html">Components</a></li>
+              <li ng-class="{'active': (state === 'index')}"><a ui-sref="index">Home</a></li>
+              <li><a ui-sref="">Login</a></li>
             </ul>
           </div>
         </nav>
       
         <ul class="sidenav" id="mobile-demo">
-          <li><a href="sass.html">Sass</a></li>
-          <li><a href="badges.html">Components</a></li>
-          <li><a href="collapsible.html">Javascript</a></li>
-          <li><a href="mobile.html">Mobile</a></li>
+          <li><a ui-sref="index">Home</a></li>
+          <li><a ui-sref="">Login</a></li>
         </ul>`
     }
 })

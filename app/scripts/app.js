@@ -13,11 +13,12 @@ angular
     'ui.router', 
     'restangular'
   ])
-  .run(function() {
-    console.log('ran');
-    $(document).ready(function(){
+  .run(function($rootScope, $location, $state, $stateParams) {
+    console.log($state);
+    $rootScope.globalState = $state;
+    $rootScope.toggleMobileNav = function() {
       $('.sidenav').sidenav();
-    });
+    }
   })
   .config(['$stateProvider', '$urlRouterProvider', '$locationProvider', 'RestangularProvider',
     function($stateProvider, $urlRouterProvider, $locationProvider, RestangularProvider) {
@@ -30,12 +31,9 @@ angular
         templateUrl: './views/index-view.html',
         controller: 'IndexController as ctrl'
       })
-      .state('index:obj', {
+      .state('posts', {
         name: 'detail',
-        url: '/:obj',
-        params: {
-          obj: null
-        },
+        url: '/posts/:pid',
         templateUrl: './views/detail-view.html',
         controller: 'DetailController as ctrl'
       })

@@ -1,3 +1,32 @@
 <nav-bar></nav-bar>
-<h1>Detail View</h1>
-{{detail}}
+
+
+<div class="section white">
+    <div class="row container">
+        <h3 class="header">A closer look</h3>
+        <h5>Photo: {{ formattedDetailCollection[0].title }} </h5>
+    </div>
+</div>
+
+<div class="container" ng-show="!loading">
+    <div class="row">
+        <div class="col s12">
+            <table class="table table-bordered table-striped">
+                <div class="collection">
+                    <div class="collection-item z-depth-1" ng-repeat="post in formattedDetailCollection">
+                        <ul>
+                            <li><b>Id:</b> {{ post.id }}</li>
+                            <li><b>Title:</b> {{ post.title }}</li>
+                            <li><b>AlbumId:</b> {{ post.albumId }}</li>
+                            <li><b>Url:</b> {{ post.url }}</li><br/>
+                            <li>
+                                <img ng-src="{{ post.url }}" alt="{{ post.title }}"/>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </table>
+        </div>
+    </div>
+</div>

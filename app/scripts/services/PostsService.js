@@ -8,12 +8,13 @@
  * Service of the angularJsAppApp
  */
 angular.module('angularJsAppApp').service('PostsService', function(Restangular) {
+    var PHOTOS_RESOURCE = "photos";
     return {
         getPosts: function() {
-            return Restangular.all('posts').getList();
+            return Restangular.all(PHOTOS_RESOURCE).getList();
         },
         getPost: function(id) {
-            return Restangular.one('posts', id);
+            return Restangular.one(PHOTOS_RESOURCE, id).get();
         }
     }
 });

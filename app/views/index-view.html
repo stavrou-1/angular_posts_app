@@ -1,4 +1,12 @@
 <nav-bar></nav-bar>
+
+<div class="section white">
+  <div class="row container">
+    <h3 class="header">Welcome to Photo Finder </h3>
+    <h5>Type in the search below or scroll down to start browsing our awesome new resources!</h5>
+  </div>
+</div>
+
 <div class="container" ng-if="loading">
   <div class="row">
     <div class="col-md-12">
@@ -7,12 +15,11 @@
   </div>
 </div>
 
-
 <form class="collection noMargTop" ng-show="!loading">
   <div class="form-group collection-item">
     <div class="input-group">
-      <div class="input-group-addon"><i class="fa fa-search"></i></div>
-      <input type="text" class="form-control" placeholder="Search for a post" ng-model="searchPost">
+      <!-- <div class="input-group-addon customSearchIcon"><i class="fa fa-search"></i></div> -->
+      <input type="text" class="form-control customSearchInput" placeholder="Search by ID, Title, or Thumbnail" ng-model="searchPost">
     </div>      
   </div>
 </form>
@@ -22,38 +29,42 @@
     <div class="col s12">
         <table class="table table-bordered table-striped">
             <thead>
-                <tr class="collection">
-                  <td class="collection-item">
-                    <a href="#" ng-click="sortType = 'id'; sortReverse = !sortReverse">
-                      <h5>Id</h5>
-                      <span ng-show="sortType == 'id' && !sortReverse" class="fa fa-caret-down"></span>
-                      <span ng-show="sortType == 'id' && sortReverse" class="fa fa-caret-up"></span>
-                    </a>
-                  </td>
-                  <td>
-                    <a href="#" ng-click="sortType = 'title'; sortReverse = !sortReverse">
-                      <h5>Title</h5>
-                      <span ng-show="sortType == 'title' && !sortReverse" class="fa fa-caret-down"></span>
-                      <span ng-show="sortType == 'title' && sortReverse" class="fa fa-caret-up"></span>
-                    </a>
-                  </td>
-                  <td>
-                    <a href="#" ng-click="sortType = 'body'; sortReverse = !sortReverse">
-                      <h5>Body</h5>
-                      <span ng-show="sortType == 'body' && !sortReverse" class="fa fa-caret-down"></span>
-                      <span ng-show="sortType == 'body' && sortReverse" class="fa fa-caret-up"></span>
-                    </a>
-                  </td>
-                </tr>
-              </thead>
+              <tr class="collection">
+                <td class="collection-item">
+                  <a href="#" ng-click="sortType = 'id'; sortReverse = !sortReverse">
+                    <h6>Id</h6>
+                    <span ng-show="sortType == 'id' && !sortReverse" class="fa fa-caret-down"></span>
+                    <span ng-show="sortType == 'id' && sortReverse" class="fa fa-caret-up"></span>
+                  </a>
+                </td>
+                <td>
+                  <a href="#" ng-click="sortType = 'title'; sortReverse = !sortReverse">
+                    <h6>Title</h6>
+                    <span ng-show="sortType == 'title' && !sortReverse" class="fa fa-caret-down"></span>
+                    <span ng-show="sortType == 'title' && sortReverse" class="fa fa-caret-up"></span>
+                  </a>
+                </td>
+                <td>
+                  <a href="#" ng-click="sortType = 'thumbnailUrl'; sortReverse = !sortReverse">
+                    <h6>Thumbnail</h6>
+                    <span ng-show="sortType == 'thumbnailUrl' && !sortReverse" class="fa fa-caret-down"></span>
+                    <span ng-show="sortType == 'thumbnailUrl' && sortReverse" class="fa fa-caret-up"></span>
+                  </a>
+                </td>
+              </tr>
+            </thead>
 
             <tbody class="collection">
               <tr class="collection-item z-depth-1" 
-                  ng-repeat="post in postCollection | orderBy: sortType: sortReverse | filter: searchPost"
+                  ng-repeat="post in formattedApiCollection[0] | orderBy: sortType: sortReverse | filter: searchPost"
                   ng-click="goToPost(post)">
                   <td>{{ post.id }}</td>
-                  <td>{{ post.title }}</td>
-                  <td>{{ post.body }}</td>
+                  <td>
+                    <h5>{{ post.title }}</h5>
+                  </td>
+                  <td>
+                    <img ng-src="{{ post.thumbnailUrl }}" alt="">
+                  </td>
               </tr>
             </tbody>
         </table>

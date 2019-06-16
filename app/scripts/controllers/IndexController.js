@@ -11,17 +11,19 @@ angular.module('angularJsAppApp').controller('IndexController',
     function ($scope, $stateParams, PostsService, $state) {
     $scope.indexContent = "Hello. I am index controller content.";
     $scope.params = $stateParams;
-    $scope.sortType     = 'name'; // set the default sort type
+    $scope.sortType     = 'albumId'; // set the default sort type
     $scope.sortReverse  = false;  // set the default sort order
     $scope.searchPost   = '';     // set the default search/filter term
     $scope.loading = false;
+    $scope.postCollection = [];
+    $scope.formattedApiCollection = [];
     $scope.retrievePosts = function() {
       $scope.loading = true;
       PostsService.getPosts()
       .then(function(data) {
-        console.log(data.plain());
-        $scope.postCollection = data.plain();
-        console.log($scope.postCollection.length)
+        $scope.postCollection.push(data.plain());
+        $scope.formattedApiCollection.push($scope.postCollection[0].splice(0, 50));
+        console.log($scope.formattedApiCollection)
         $scope.loading = false;
       })
       .catch(function(error) {
@@ -33,10 +35,10 @@ angular.module('angularJsAppApp').controller('IndexController',
       $scope.retrievePosts()
     }
     $scope.goToPost = function(post) {
-      console.log(post);
-      $state.go('index', {
-        obj: post.id
-      })
+      console.log(post.id)
+      $state.go('posts', {
+        pid: post.id
+      });
     }
     init();
 });
