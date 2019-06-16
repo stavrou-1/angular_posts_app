@@ -1,0 +1,37 @@
+body {
+    background: gainsboro;
+}
+h1 {
+    color: blue;
+}
+// Material design resets
+.container .row .col.m4 {
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    padding: 1em;
+    background: #FFF;
+    cursor: pointer;
+    min-height: 25em;
+}
+nav .brand-logo {
+    margin-left: 1em;
+}
+nav .right {
+    margin-right: 1em;
+}
+table tr {
+    border-bottom: 1px solid rgba(0,0,0,.12);
+    margin: 7em;
+    background: white;
+    padding: 5em;
+    cursor: pointer;
+}
+table td, table th {
+    padding: 1em;
+}
+table thead td a {
+    color: #4c4c4c;
+}
+.collection.noMargTop {
+    margin-top:0;
+    padding-top:0;
+}

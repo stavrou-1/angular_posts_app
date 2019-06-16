@@ -1,17 +1,62 @@
-<nav>
-    <ul>
-        <li>
-            <a ui-sref="index">home</a>
-        </li>
-        <li>
-            <a ui-sref="index({did: 4})">poop {{param}}</a>
-        </li>
-    </ul>
-</nav>
-<div class="container">
+<nav-bar></nav-bar>
+<div class="container" ng-if="loading">
   <div class="row">
-    <div class="col-md-12 col-lg-12">
-      <h2>{{indexContent}}</h2>
+    <div class="col-md-12">
+        <h5>Loading...</h5>
+    </div>
+  </div>
+</div>
+
+
+<form class="collection noMargTop" ng-show="!loading">
+  <div class="form-group collection-item">
+    <div class="input-group">
+      <div class="input-group-addon"><i class="fa fa-search"></i></div>
+      <input type="text" class="form-control" placeholder="Search for a post" ng-model="searchPost">
+    </div>      
+  </div>
+</form>
+
+<div class="container" ng-show="!loading">
+  <div class="row">
+    <div class="col s12">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr class="collection">
+                  <td class="collection-item">
+                    <a href="#" ng-click="sortType = 'id'; sortReverse = !sortReverse">
+                      <h5>Id</h5>
+                      <span ng-show="sortType == 'id' && !sortReverse" class="fa fa-caret-down"></span>
+                      <span ng-show="sortType == 'id' && sortReverse" class="fa fa-caret-up"></span>
+                    </a>
+                  </td>
+                  <td>
+                    <a href="#" ng-click="sortType = 'title'; sortReverse = !sortReverse">
+                      <h5>Title</h5>
+                      <span ng-show="sortType == 'title' && !sortReverse" class="fa fa-caret-down"></span>
+                      <span ng-show="sortType == 'title' && sortReverse" class="fa fa-caret-up"></span>
+                    </a>
+                  </td>
+                  <td>
+                    <a href="#" ng-click="sortType = 'body'; sortReverse = !sortReverse">
+                      <h5>Body</h5>
+                      <span ng-show="sortType == 'body' && !sortReverse" class="fa fa-caret-down"></span>
+                      <span ng-show="sortType == 'body' && sortReverse" class="fa fa-caret-up"></span>
+                    </a>
+                  </td>
+                </tr>
+              </thead>
+
+            <tbody class="collection">
+              <tr class="collection-item z-depth-1" 
+                  ng-repeat="post in postCollection | orderBy: sortType: sortReverse | filter: searchPost"
+                  ng-click="goToPost(post)">
+                  <td>{{ post.id }}</td>
+                  <td>{{ post.title }}</td>
+                  <td>{{ post.body }}</td>
+              </tr>
+            </tbody>
+        </table>
     </div>
   </div>
 </div>

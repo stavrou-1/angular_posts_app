@@ -7,9 +7,9 @@
  * # DetailController
  * Controller of the angularJsAppApp
  */
-angular.module('angularJsAppApp').controller('DetailController', function ($scope, $stateParams) {
+angular.module('angularJsAppApp').controller('DetailController', 
+  function ($scope, $stateParams) {
     $scope.detail = "detail";
     $scope.params = $stateParams;
-
-    console.log($scope.params)
-  });
+    console.log($scope.params);
+});

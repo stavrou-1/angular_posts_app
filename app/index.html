@@ -5,8 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
-  <link rel="stylesheet" href="./libs/bootstrap-4.3.1.css"/>
-  <link rel="stylesheet" href="./styles/main.css"/>
+  <link rel="stylesheet" href="./dist/css/main.css"/>
 </head>
 <body>
   <div ui-view>Test</div>
@@ -17,10 +16,17 @@
 </body>
 <script src="./libs/angular.1.7.8.js"></script>
 <script src="./libs/angular-ui-router.js"></script>
+<script src="./libs/underscore.1.9.1.js"></script>
+<script src="./libs/restangular.1.6.1.js"></script>
 <script src="./libs/jquery.js"></script>
-<!-- modules -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<!-- Modules -->
 <script src="./scripts/app.js"></script>
-<!-- controllers -->
+<!-- Directive -->
+<script src="./scripts/directives/NavBar.js"></script>
+<!-- Services -->
+<script src="./scripts/services/PostsService.js"></script>
+<!-- Controllers -->
 <script src="./scripts/controllers/IndexController.js"></script>
 <script src="./scripts/controllers/DetailController.js"></script>
 </html>
