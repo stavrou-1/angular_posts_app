@@ -10,6 +10,8 @@
 angular.module('angularJsAppApp').controller('DetailController', 
   function ($scope, $stateParams, PostsService) {
     $scope.params = $stateParams;
+    $scope.paramsBluePrint = {'#': null,'pid': 2};
+    console.log($scope.params);
     console.log("Resource id: " + $scope.params.pid);
     $scope.detail = "detail";
     $scope.loading = false;
