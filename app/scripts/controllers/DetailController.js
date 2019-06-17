@@ -8,7 +8,7 @@
  * Controller of the angularJsAppApp
  */
 angular.module('angularJsAppApp').controller('DetailController', 
-  function ($scope, $stateParams, PostsService) {
+  function ($scope, $stateParams, PostsService, $http) {
     $scope.params = $stateParams;
     $scope.paramsBluePrint = {'#': null,'pid': 2};
     console.log($scope.params);
@@ -20,6 +20,7 @@ angular.module('angularJsAppApp').controller('DetailController',
       $scope.loading = true;
       PostsService.getPost(postId)
       .then(function(data) {
+        console.log(data.lenght);
         $scope.formattedDetailCollection.push(data.plain());
         console.log($scope.formattedDetailCollection);
         $scope.loading = false;

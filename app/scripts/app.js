@@ -18,6 +18,9 @@ angular
     $rootScope.toggleMobileNav = function() {
       $('.sidenav').sidenav();
     }
+    $rootScope.$on('$stateChangeError', function(event) {
+      $state.go('404');
+    });
   })
   .config(['$stateProvider', '$urlRouterProvider', '$locationProvider', 'RestangularProvider',
     function($stateProvider, $urlRouterProvider, $locationProvider, RestangularProvider) {
@@ -28,12 +31,17 @@ angular
         name: 'index',
         url: '/',
         templateUrl: './views/index-view.html',
-        controller: 'IndexController as ctrl'
+        controller: 'IndexController'
       })
       .state('posts', {
-        name: 'detail',
+        name: 'posts',
         url: '/posts/:pid',
         templateUrl: './views/detail-view.html',
-        controller: 'DetailController as ctrl'
+        controller: 'DetailController'
+      })
+      .state('404', {
+        name: '404',
+        url: '/404',
+        templateUrl: './views/404-view.html'
       })
   }])

@@ -24,7 +24,6 @@ angular.module('angularJsAppApp').controller('IndexController',
         $scope.done = true;
         $scope.postCollection.push(data.plain());
         $scope.formattedApiCollection.push($scope.postCollection[0].splice(0, 50));
-        console.log(JSON.stringify($scope.formattedApiCollection,null,2));
         $scope.loading = false;
       })
       .catch(function(error) {

@@ -1,4 +1,4 @@
-{
+[{
     "Version": "2012-10-17",
     "Statement": [
         {
@@ -11,7 +11,7 @@
             "Resource": "arn:aws:s3:::stavrou123z-angular123z-devops123z-production/*"
         }
     ]
-}
+},
 
 {
     "Version": "2012-10-17",
@@ -26,4 +26,4 @@
             "Resource": "arn:aws:s3:::stavrou123z-angular123z-devops123z-development/*"
         }
     ]
-}
+}]
