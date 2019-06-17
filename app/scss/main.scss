@@ -89,3 +89,19 @@ footer.blue.lighten-2 ul li {
     display: inline;
     color: #FFF;
 }
+table thead td a {
+    color: #4c4c4c;
+    position: relative;
+    display: block;
+}
+table thead td a .fa {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    position: absolute;
+    top: 0;
+    left: -1em;
+}

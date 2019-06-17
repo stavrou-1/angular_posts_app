@@ -12,15 +12,19 @@ angular.module('angularJsAppApp').controller('DetailController',
     $scope.params = $stateParams;
     console.log("Resource id: " + $scope.params.pid);
     $scope.detail = "detail";
+    $scope.loading = false;
     $scope.formattedDetailCollection = [];
     $scope.getPostDetails = function(postId) {
+      $scope.loading = true;
       PostsService.getPost(postId)
       .then(function(data) {
         $scope.formattedDetailCollection.push(data.plain());
         console.log($scope.formattedDetailCollection);
+        $scope.loading = false;
       })
       .catch(function(error) {
         console.error(error);
+        $scope.loading = false;
       })
     }
     $scope.getPostDetails($scope.params.pid);

@@ -3,8 +3,16 @@
 
 <div class="section white">
     <div class="row container">
-        <h3 class="header">A closer look</h3>
+        <h3 class="header">Photo Details Page</h3>
         <h5>Photo: {{ formattedDetailCollection[0].title }} </h5>
+    </div>
+</div>
+
+<div class="container" ng-if="loading">
+    <div class="row">
+        <div class="col-md-12">
+            <h5>Loading...</h5>
+        </div>
     </div>
 </div>
 

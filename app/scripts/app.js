@@ -14,7 +14,6 @@ angular
     'restangular'
   ])
   .run(function($rootScope, $location, $state, $stateParams) {
-    console.log($state);
     $rootScope.globalState = $state;
     $rootScope.toggleMobileNav = function() {
       $('.sidenav').sidenav();

@@ -12,7 +12,7 @@ angular.module('angularJsAppApp').directive('navBar', function($rootScope) {
         restrict: 'E',
         scope: false,
         link: function(scope) {
-          scope.state = $rootScope.globalState.$current.name
+          scope.state = $rootScope.globalState.$current.name;
         },
         template: 
           `  <nav class="blue lighten-2">
