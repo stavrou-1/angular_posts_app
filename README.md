@@ -25,7 +25,7 @@ Running `gulp test` will run the unit tests with karma / jasmine.
 
 ## Improving this appliation
 ## 1.) What type of security might we want to implement?
-    At Valtira we used Amazon Cognito for authentication in a lot of our applications both mobile and web apps. What's great about AWS Cognito is that there a lot of things out of the box like sign up,authentication, disabling and enabling MFA (multi-factor authentication) for a user pool, sending verification codes via SMS to mobile devices and email addresses and the ability to change passwords once authenticated at ease. Here is some of the documentation:
+    In many projects I have used Amazon Cognito for authentication in a lot of our applications both mobile and web apps. What's great about AWS Cognito is that there a lot of things out of the box like sign up,authentication, disabling and enabling MFA (multi-factor authentication) for a user pool, sending verification codes via SMS to mobile devices and email addresses and the ability to change passwords once authenticated at ease. Here is some of the documentation:
 
     https://docs.aws.amazon.com/cognito/latest/developerguide/using-amazon-cognito-user-identity-pools-javascript-examples.html
 
