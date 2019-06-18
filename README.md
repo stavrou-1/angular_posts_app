@@ -1,8 +1,11 @@
-# angular-posts_app
+# angular_posts_app
 Author: Yiannis Stavrou
 
 This project is generated with [yo angular generator](https://github.com/yeoman/generator-angular)
 version 0.16.0.
+
+## To view the app on S3
+http://stavrou123z-angular123z-devops123z-production.s3-website.us-east-2.amazonaws.com
 
 ## To install npm or node
 
