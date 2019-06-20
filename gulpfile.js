@@ -94,4 +94,4 @@ gulp.task('test', function(done) {
         }))
 })
 
-gulp.task('default', gulp.parallel('scss', 'scss:watch', 'serve', 'js', 'lint'));
+gulp.task('default', gulp.parallel('scss', 'scss:watch', 'serve', 'js', 'js:watch', 'lint'));
