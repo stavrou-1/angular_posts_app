@@ -32,9 +32,9 @@ gulp.task('js', function() {
         './app/libs/underscore.1.9.1.js',
         './app/libs/restangular.1.6.1.js',
         ])
-        .pipe(concat('dist.js'))
+        .pipe(concat('libs.js'))
         .pipe(uglify())
-        .pipe(gulp.dest('./app/dist/js'));
+        .pipe(gulp.dest('./app/dist/js/libs'));
     
     gulp.src([
         './app/scripts/app.js',
@@ -42,9 +42,12 @@ gulp.task('js', function() {
         './app/scripts/directives/**/*.js',
         './app/scripts/controllers/**/*.js'
         ])
-        .pipe(concat('main.js'))
-        // .pipe(uglify())
-        .pipe(gulp.dest('./app/dist/main'))
+        .pipe(concat('custom.js'))
+        // .pipe(ngAnnotate()) // ngAnnotate() is an alternative to {mangle:false} integrate whatever suites your needs.
+        .pipe(uglify({
+            mangle: false
+        }))
+        .pipe(gulp.dest('./app/dist/js/custom'))
 })
 
 gulp.task('js:watch', function() {
