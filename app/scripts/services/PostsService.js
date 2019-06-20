@@ -7,7 +7,7 @@
  * # PostsService
  * Service of the angularJsAppApp
  */
-angular.module('angularJsAppApp').service('PostsService', function(Restangular,$http) {
+angular.module('angularJsAppApp').service('PostsService', function(Restangular, $http, $q) {
     var PHOTOS_RESOURCE = "photos";
     return {
         getPosts: function() {

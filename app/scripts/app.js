@@ -11,7 +11,8 @@
 angular
   .module('angularJsAppApp', [
     'ui.router', 
-    'restangular'
+    'restangular',
+    'newModule'
   ])
   .run(function($rootScope, $location, $state, $stateParams) {
     $rootScope.globalState = $state;

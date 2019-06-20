@@ -20,7 +20,7 @@ angular.module('angularJsAppApp').controller('DetailController',
       $scope.loading = true;
       PostsService.getPost(postId)
       .then(function(data) {
-        console.log(data.lenght);
+        // console.log(data.lenght);
         $scope.formattedDetailCollection.push(data.plain());
         console.log($scope.formattedDetailCollection);
         $scope.loading = false;

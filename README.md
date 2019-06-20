@@ -23,7 +23,16 @@ Run `gulp` for building and starting the application.
 
 Running `gulp test` will run the unit tests with karma / jasmine.
 
-## Improving this appliation
+## Testing (NOTE to developers about handling unhandled rejection errors with jasmine)
+    The following is intergrated into our unit tests to ensure that we are able to catch 404 errors with our $httpbackend module.
+    https://www.codelord.net/2017/08/20/angular-1-dot-6-s-possibly-unhandled-rejection-errors 
+
+## Testing (NOTE to developers)
+    ui.router seems to interfere with our jasmine unit tests. The solution to this is to
+    create a seperate AngularJS module that does not depend on ui router; in our case newModule has 0 dependencies.
+    Per: https://stackoverflow.com/questions/23655307/ui-router-interfers-with-httpbackend-unit-test-angular-js/23670198#23670198
+
+## Improving this application
 ## 1.) What type of security might we want to implement?
     In many projects I have used Amazon Cognito for authentication in a lot of our applications both mobile and web apps. What's great about AWS Cognito is that there a lot of things out of the box like sign up,authentication, disabling and enabling MFA (multi-factor authentication) for a user pool, sending verification codes via SMS to mobile devices and email addresses and the ability to change passwords once authenticated at ease. Here is some of the documentation:
 
@@ -80,8 +89,7 @@ Running `gulp test` will run the unit tests with karma / jasmine.
     Be sure to measure by quality, not quantity. One thousand lines of messy code will never be as good as 100 lines of clean code.
     - Integrating Remote Developers If remote team members understand the company and its goals, they will be more likely to feel like they are part of the team.
 
-## 7.) What feedback would you give to the developers of this API, what improvements could
-be made from your perspective as a client?
+## 7.) What feedback would you give to the developers of this API, what improvements could be made from your perspective as a client?
     Per (1): Once a user has created an account via AWS Cognito and those  credentials are authenticated - then an authentication token (or id token) is created. For securing API endpoints we could  require that the headers of each request contains a valid id token like the following:
     headers: {
         Authorization: 'Bearer c3V2b2ppd...xxxxx....(TOKEN)'

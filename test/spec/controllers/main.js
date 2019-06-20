@@ -105,25 +105,6 @@ describe('Post Details Service', function() {
   it('should contain an api service',function () {
     expect(PostsService).not.toEqual(null);
   });
-
-  it('should provide get', function (done) {
-    var dataObject = {
-      "albumId": 1,
-      "id": 2,
-      "title": "reprehenderit est deserunt velit ipsam",
-      "url": "https://via.placeholder.com/600/771796",
-      "thumbnailUrl": "https://via.placeholder.com/150/771796"
-    };
-    httpBackend.expectGET("https://jsonplaceholder.typicode.com/photos/2")
-      .respond(200,dataObject);
-      PostsService.getPost(2).then(function(data) {
-        expect(data.id).toBe(2);
-        httpBackend.flush();
-      }).catch(function(error) {
-        done();
-      })
-      done();
-  });
 });
 
 describe('Posts Service', function() {
@@ -233,3 +214,88 @@ describe('Testing app.js routes', function() {
     expect(errorPage.templateUrl).toEqual('./views/404-view.html');
   });
 })
+
+// Let's just test some data service thing.
+describe("Data Service testing /posts", function() {
+  var NewModulePostsService, $q, $httpBackend;
+  var API = "https://jsonplaceholder.typicode.com/posts/";
+  var RESPONSE_SUCCESS = {
+    "userId": 1,
+    "id": 2,
+    "title": "qui est esse",
+    "body": "est rerum tempore vitae\nsequi sint nihil reprehenderit dolor beatae ea dolores neque\nfugiat blanditiis voluptate porro vel nihil molestiae ut reiciendis\nqui aperiam non debitis possimus qui neque nisi nulla"
+  };
+
+  // Add new mocked error response;
+  var RESPONSE_ERROR = {};
+
+  beforeEach(module('newModule'));
+
+  beforeEach(inject(function(_NewModulePostsService_, _$q_, _$httpBackend_) {
+    NewModulePostsService = _NewModulePostsService_;
+    $q = _$q_;
+    $httpBackend = _$httpBackend_;
+  }));
+
+  it('should exist', function() {
+    expect(NewModulePostsService).toBeDefined();
+  });
+
+  describe("returnPost()", function() {
+    var result;
+    
+    beforeEach(function() {
+      result = {};
+      spyOn(NewModulePostsService, "returnPost").and.callThrough();
+    });
+
+    it('Should return a NewModulePostsService when called with a valid id', function() {
+      var search = 2;
+      $httpBackend.whenGET(API + search).respond(200, $q.when(RESPONSE_SUCCESS));
+
+      expect(NewModulePostsService.returnPost).not.toHaveBeenCalled();
+      expect(result).toEqual({});
+
+      $httpBackend.expectGET(API + search).respond(200, RESPONSE_SUCCESS);
+
+      NewModulePostsService.returnPost(search)
+        .then(function(res) {
+          result = res;
+      });
+
+      $httpBackend.flush();
+
+      console.log(JSON.stringify(result,null,2));
+
+      expect(NewModulePostsService.returnPost).toHaveBeenCalledWith(search);
+      expect(result.userId).toEqual(1);
+      expect(result.id).toEqual(2);
+      expect(result.title).toEqual('qui est esse');
+      expect(result.body).toEqual('est rerum tempore vitae\nsequi sint nihil reprehenderit dolor beatae ea dolores neque\nfugiat blanditiis voluptate porro vel nihil molestiae ut reiciendis\nqui aperiam non debitis possimus qui neque nisi nulla');
+    });
+
+    it('Should return a 404 when called with an invalid id', function() {
+      // update search term
+      var search = "godzilla";
+
+      // update status code and response object (reject instead of when/resolve)
+      $httpBackend.whenGET(API + search).respond(404, $q.reject(RESPONSE_ERROR));
+
+      expect(NewModulePostsService.returnPost).not.toHaveBeenCalled();
+      expect(result).toEqual({});
+
+      $httpBackend.expectGET(API + search).respond(404, RESPONSE_ERROR);
+
+      // // update chained method to catch
+      NewModulePostsService.returnPost(search)
+        .catch(function(res) {
+          result = res;
+      });
+        
+      $httpBackend.flush();
+
+      expect(NewModulePostsService.returnPost).toHaveBeenCalledWith(search);
+      expect(result).toEqual(RESPONSE_ERROR); // json placeholder just returns an empty object for no results.
+    })
+  });
+});

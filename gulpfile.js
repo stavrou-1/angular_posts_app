@@ -24,11 +24,32 @@ gulp.task('serve', function () {
 });
 
 gulp.task('js', function() {
-    return pipeline(
-        gulp.src('./app/libs/**/*.js'),
-        uglify(),
-        gulp.dest('./app/dist/js')
-    )
+    gulp.src([
+        './app/libs/angular.1.7.8.js',
+        './app/libs/angular-mocks.1.7.8.js',
+        './app/libs/angular-ui-router.js',
+        './app/libs/jquery.js',
+        './app/libs/underscore.1.9.1.js',
+        './app/libs/restangular.1.6.1.js',
+        ])
+        .pipe(concat('dist.js'))
+        .pipe(uglify())
+        .pipe(gulp.dest('./app/dist/js'));
+    
+    gulp.src([
+        './app/scripts/app.js',
+        './app/scripts/services/**/*.js',
+        './app/scripts/directives/**/*.js',
+        './app/scripts/controllers/**/*.js'
+        ])
+        .pipe(concat('main.js'))
+        // .pipe(uglify())
+        .pipe(gulp.dest('./app/dist/main'))
+})
+
+gulp.task('js:watch', function() {
+    gulp.watch('./app/scripts/**/*.js', gulp.parallel('js'));
+    gulp.watch('./app/scripts/**/*.js').on('change', reload);
 })
 
 gulp.task('scss', function() {
