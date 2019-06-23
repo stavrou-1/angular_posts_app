@@ -31,9 +31,12 @@ gulp.task('js', function() {
         './app/libs/jquery.js',
         './app/libs/underscore.1.9.1.js',
         './app/libs/restangular.1.6.1.js',
+        './app/libs/materialize.1.0.0.js'
         ])
         .pipe(concat('libs.js'))
-        .pipe(uglify())
+        .pipe(uglify({
+            mangle: false
+        }))
         .pipe(gulp.dest('./app/dist/js/libs'));
     
     gulp.src([
